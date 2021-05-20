@@ -8,6 +8,7 @@
             > Back
             </NuxtLink>
         </div>
+        <typing-app/>
 
     </div>
 </template>
@@ -15,8 +16,10 @@
 <script>
 import TestComp from "../components/TestComp.vue"
 import TodoList from "../components/TodoList.vue"
+import TypingText from '~/components/TypingText'
+import TypingApp from '~/components/TypingApp'
 export default {
-    components: { TestComp },}
+    components: { TypingApp, TypingText, TestComp },}
 </script>
 
 <style>
