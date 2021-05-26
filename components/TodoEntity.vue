@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
+
 export default {
     data: function () {
         return {
@@ -10,6 +12,7 @@ export default {
         }
     },
     methods: {
+        ...mapMutations(['delTodo']),
         onClick: async function () {
             this.isDone = !this.isDone
             await setTimeout(() => {
@@ -17,7 +20,7 @@ export default {
             }, 500)
         }
     },
-    props: ['content', 'delTodo', 'id']
+    props: ['content', 'id']
 }
 </script>
 

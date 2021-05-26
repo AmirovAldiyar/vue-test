@@ -1,11 +1,13 @@
 <template>
     <div class='todo-input'>
-        <input type="text" v-model="content" class='todo-input-field' placeholder="write new todo" v-on:submit="onSubmit"/>
+        <input ref="todo" type="text" v-model="content" class='todo-input-field' @keyup.enter='onSubmit' placeholder="write new todo" v-on:submit="onSubmit"/>
         <div v-on:click="onSubmit" class='button--grey submit-button'>add</div>
     </div>
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
+
 export default {
     data: function () {
         return {
@@ -13,6 +15,7 @@ export default {
         }
     },
     methods: {
+        ...mapMutations(['addTodo']),
         onSubmit: function() {
             if(this.content !== ""){
                 this.addTodo(this.content)
@@ -20,8 +23,8 @@ export default {
             }
         }
     },
-    props: {
-        addTodo: {type: Function},
+    mounted() {
+        this.$refs.todo.focus()
     }
 }
 </script>

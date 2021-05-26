@@ -1,13 +1,9 @@
 <template>
-    <input class='typing-input' v-model="textInput" placeholder='start typing!'/>
+    <input ref="inputText" class='typing-input' v-model="textInput" placeholder='start typing!'/>
 </template>
 
 <script>
 export default {
-    data: function () {
-        return {
-        }
-    },
     props: ['newInput', 'updateText'],
     computed: {
         textInput: {
@@ -15,9 +11,12 @@ export default {
                 return this.newInput
             },
             set: function(value) {
-                this.$emit('updateText', value)
+                this.$emit('onChange', value)
             }
         }
+    },
+    mounted() {
+        this.$refs.inputText.focus()
     }
 }
 </script>
